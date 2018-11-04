@@ -1,0 +1,42 @@
+@model Models.Tabelle.Contatti
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contatti</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Valore)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Valore)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Anagrafica)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Anagrafica.AnagraficaId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoContatto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoContatto.TipoContattoId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ContattiId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,72 @@
+@model Models.Tabelle.Indirizzi
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Indirizzi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nazione)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nazione)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Regione)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Regione)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Provincia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Provincia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Citta)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Citta)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Denominazione)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Denominazione)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cap)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cap)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Anagrafica)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Anagrafica.AnagraficaId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoIndirizzo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoIndirizzo.TipoIndirizzoId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.IndirizziId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

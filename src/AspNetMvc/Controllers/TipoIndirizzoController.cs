@@ -1,0 +1,153 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Models;
+using Models.Tabelle;
+
+namespace AspNetMvc.Controllers
+{
+    public class TipoIndirizzoController : Controller
+    {
+        private readonly AnagraficaContext _context;
+
+        public TipoIndirizzoController(AnagraficaContext context)
+        {
+            _context = context;
+        }
+
+        // GET: TipoIndirizzo
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.TipoIndirizzo.ToListAsync());
+        }
+
+        // GET: TipoIndirizzo/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var tipoIndirizzo = await _context.TipoIndirizzo
+                .FirstOrDefaultAsync(m => m.TipoIndirizzoId == id);
+            if (tipoIndirizzo == null)
+            {
+                return NotFound();
+            }
+
+            return View(tipoIndirizzo);
+        }
+
+        // GET: TipoIndirizzo/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: TipoIndirizzo/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("TipoIndirizzoId,Descrizione")] TipoIndirizzo tipoIndirizzo)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(tipoIndirizzo);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(tipoIndirizzo);
+        }
+
+        // GET: TipoIndirizzo/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var tipoIndirizzo = await _context.TipoIndirizzo.FindAsync(id);
+            if (tipoIndirizzo == null)
+            {
+                return NotFound();
+            }
+            return View(tipoIndirizzo);
+        }
+
+        // POST: TipoIndirizzo/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("TipoIndirizzoId,Descrizione")] TipoIndirizzo tipoIndirizzo)
+        {
+            if (id != tipoIndirizzo.TipoIndirizzoId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(tipoIndirizzo);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TipoIndirizzoExists(tipoIndirizzo.TipoIndirizzoId))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(tipoIndirizzo);
+        }
+
+        // GET: TipoIndirizzo/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var tipoIndirizzo = await _context.TipoIndirizzo
+                .FirstOrDefaultAsync(m => m.TipoIndirizzoId == id);
+            if (tipoIndirizzo == null)
+            {
+                return NotFound();
+            }
+
+            return View(tipoIndirizzo);
+        }
+
+        // POST: TipoIndirizzo/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var tipoIndirizzo = await _context.TipoIndirizzo.FindAsync(id);
+            _context.TipoIndirizzo.Remove(tipoIndirizzo);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool TipoIndirizzoExists(int id)
+        {
+            return _context.TipoIndirizzo.Any(e => e.TipoIndirizzoId == id);
+        }
+    }
+}
