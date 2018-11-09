@@ -2,12 +2,14 @@
 
 @{
     ViewData["Title"] = "Details";
+    ViewData["BreadCrum"] ="Dettagli Anagrafica";
+    ViewData["RootBreadCrum"] ="Tipo Anagrafica";
 }
 
-<h2>Details</h2>
+<h2>Dettagli Anagrafica</h2>
 
 <div>
-    <h4>TipoAnagrafica</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,6 +21,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.TipoAnagraficaId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.TipoAnagraficaId"><i class="far fa-edit"></i>  Modifica</a> |
+    <a asp-action="Index"><i class="fas fa-long-arrow-alt-left"></i>  Indietro</a>
 </div>

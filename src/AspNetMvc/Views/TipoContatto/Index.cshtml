@@ -2,12 +2,14 @@
 
 @{
     ViewData["Title"] = "Index";
+    ViewData["BreadCrum"] ="Tipo Contatto";
+    ViewData["RootBreadCrum"] ="Domini";
 }
 
-<h2>Index</h2>
+<h2 class="Domini">CONTATTI</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p class="DominiGenerali">
+    <a asp-action="Create">Clicca qui per inserire un nuovo contatto...</a>
 </p>
 <table class="table">
     <thead>
@@ -25,9 +27,9 @@
                 @Html.DisplayFor(modelItem => item.Descrizione)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.TipoContattoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.TipoContattoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.TipoContattoId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.TipoContattoId"><i class="far fa-edit"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.TipoContattoId"><i class="fas fa-info"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.TipoContattoId"><i class="far fa-trash-alt"></i></a>
             </td>
         </tr>
 }

@@ -1667,4 +1667,15 @@
     console.log(error);
   }
 
+  })(jQuery);
+
+(function($)
+{
+var prova = window.location.pathname;
+
+  $(".navbar-sidebar2").find('a').each(function() {
+  $(this).toggleClass('active', $(this).attr('href') == prova);
+
+
+  })
 })(jQuery);

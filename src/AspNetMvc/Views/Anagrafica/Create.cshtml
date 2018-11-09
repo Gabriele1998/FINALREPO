@@ -2,11 +2,13 @@
 
 @{
     ViewData["Title"] = "Create";
+    ViewData["BreadCrum"] ="Crea Anagrafica";
+    ViewData["RootBreadCrum"] ="Anagrafiche";
 }
 
-<h2>Create</h2>
+<h2>Inserimento Nuova Anagrafica</h2>
 
-<h4>Anagrafica</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -54,14 +56,14 @@
                 <select asp-for="TipoAnagraficaId" class ="form-control" asp-items="ViewBag.TipoAnagraficaId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Inserisci" class="btn btn-default" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="fas fa-long-arrow-alt-left">Indietro</a>
 </div>
 
 @section Scripts {
